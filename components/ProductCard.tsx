@@ -1,5 +1,5 @@
 // components/ProductCard.tsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useShoppingContext } from "@/provider/ShoppingContext"; // Import context to access addProductToCart and removeProductFromCart
 
@@ -26,9 +26,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
   customHeight = 150,
   customWidth = 190,
 }) => {
-  const { addProductToCart, removeProductFromCart } = useShoppingContext();
+  const { shoppingState, addProductToCart, removeProductFromCart } =
+    useShoppingContext();
 
-  const [isSelected, setIsSelected] = useState(false);
+  const [isSelected, setIsSelected] = useState(
+    shoppingState.selectedProducts.some((item) => item.id === product.id)
+  );
 
   const handleCheckboxChange = () => {
     setIsSelected((prev) => !prev);
@@ -42,6 +45,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
       removeProductFromCart(product.id);
     }
   };
+
+  useEffect(() => {
+    setIsSelected(
+      shoppingState.selectedProducts.some((item) => item.id === product.id)
+    );
+  }, [shoppingState.selectedProducts, product.id]);
 
   return (
     <div className="border p-2 shadow-lg rounded-md relative ">

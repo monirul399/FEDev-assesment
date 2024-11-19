@@ -20,7 +20,7 @@ export default function DisplayProducts() {
   return (
     <div className="w-full border-y h-full overflow-hidden">
       <h2 className="font-bold mb-2 py-[10px] px-[30px]">
-        Products in "{shoppingState.selectedCategory}" Category
+        Products in {`"${shoppingState.selectedCategory}"`} Category
       </h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 h-[calc(100%_-_70px)] overflow-y-auto px-[30px]">
         {filteredProducts.length > 0 ? (
