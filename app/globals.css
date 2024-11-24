@@ -36,8 +36,6 @@
   background: #555;
 }
 
-
-
 .scrollbar-hide {
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
@@ -58,8 +56,6 @@
 
 .cart-items-container {
   max-height: calc(100% - 280px);
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .cart-item {

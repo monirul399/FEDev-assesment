@@ -10,6 +10,7 @@ export type Product = {
   title: string;
   price: number;
   image: string;
+  description: string;
 };
 
 const categories: string[] = [
@@ -46,6 +47,7 @@ export async function fetchImagesAndGenerateData(): Promise<Product[]> {
           title: `${category} Product ${i}`,
           price: parseFloat((Math.random() * 100 + 10).toFixed(2)),
           image: image,
+          description: `description of Product ${i} in ${category}`,
         });
         imageIndex++;
       }
